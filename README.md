@@ -1,4 +1,4 @@
-# ?? Secure Authentication API - ASP.NET Core 8
+# 🔐 Secure Authentication API - ASP.NET Core 8
 
 A production-ready RESTful API for user authentication and authorization featuring JWT tokens, refresh tokens, audit logging, and rate limiting.
 
@@ -6,27 +6,27 @@ A production-ready RESTful API for user authentication and authorization featuri
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()
 
-## ? Features
+## ✨ Features
 
 ### Core Authentication
-- ?? **JWT Token Authentication** - Stateless authentication with role-based authorization
-- ?? **Refresh Token System** - Automatic token rotation with 7-day expiry
-- ?? **User Management** - Registration, login, and profile management
-- ??? **Password Security** - ASP.NET Identity with secure hashing
+- 🔑 **JWT Token Authentication** - Stateless authentication with role-based authorization
+- 🔄 **Refresh Token System** - Automatic token rotation with 7-day expiry
+- 👤 **User Management** - Registration, login, and profile management
+- 🛡️ **Password Security** - ASP.NET Identity with secure hashing
 
 ### Advanced Security
-- ?? **Login Audit Logging** - Track all authentication events (success, failure, refresh, logout)
-- ?? **Rate Limiting** - Prevent brute-force attacks (5 req/min on auth endpoints)
-- ?? **Role-Based Access Control** - Admin and User roles with granular permissions
-- ?? **Global Exception Handling** - Consistent error responses across API
+- 📊 **Login Audit Logging** - Track all authentication events (success, failure, refresh, logout)
+- 🚦 **Rate Limiting** - Prevent brute-force attacks (5 req/min on auth endpoints)
+- 🎭 **Role-Based Access Control** - Admin and User roles with granular permissions
+- ⚠️ **Global Exception Handling** - Consistent error responses across API
 
 ### Developer Experience
-- ?? **Swagger/OpenAPI** - Interactive API documentation with JWT support
-- ??? **Clean Architecture** - Layered design following SOLID principles
-- ??? **SQLite Database** - File-based database with auto-migrations
-- ?? **Comprehensive Documentation** - API examples and testing guides
+- 📚 **Swagger/OpenAPI** - Interactive API documentation with JWT support
+- 🏗️ **Clean Architecture** - Layered design following SOLID principles
+- 🗃️ **SQLite Database** - File-based database with auto-migrations
+- 📝 **Comprehensive Documentation** - API examples and testing guides
 
-## ?? Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
@@ -37,8 +37,8 @@ A production-ready RESTful API for user authentication and authorization featuri
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd ApiAuth
+git clone https://github.com/Radiansyh/aspnet-identity-auth-api.git
+cd aspnet-identity-auth-api/ApiAuth
 
 # Restore dependencies
 dotnet restore
@@ -52,27 +52,27 @@ The API will start at:
 - **Swagger UI**: `https://localhost:7xxx/swagger`
 
 The SQLite database (`auth.db`) is created automatically on first run with:
-- ? Identity tables
-- ? Admin and User roles
-- ? Default admin account (see below)
+- ✅ Identity tables
+- ✅ Admin and User roles
+- ✅ Default admin account (see below)
 
 ### Default Admin Credentials
 
 The application automatically creates an admin user on first run:
 
 ```
-?? Email: admin@apiauth.com
-?? Password: Admin@123
-?? Roles: Admin, User
+📧 Email: admin@apiauth.com
+🔑 Password: Admin@123
+👑 Roles: Admin, User
 ```
 
-**?? Important:** Change these credentials immediately in production!
+**⚠️ Important:** Change these credentials immediately in production!
 
-## ?? API Documentation
+## 📖 API Documentation
 
 ### Authentication Endpoints
 
-#### 1?? Register New User
+#### 1️⃣ Register New User
 ```http
 POST /api/auth/register
 Content-Type: application/json
@@ -96,7 +96,7 @@ Content-Type: application/json
 }
 ```
 
-#### 2?? Login
+#### 2️⃣ Login
 ```http
 POST /api/auth/login
 Content-Type: application/json
@@ -107,11 +107,11 @@ Content-Type: application/json
 }
 ```
 
-?? **Rate Limited**: 5 requests per minute per IP
+🚦 **Rate Limited**: 5 requests per minute per IP
 
 **Response**: Same as registration
 
-#### 3?? Refresh Access Token
+#### 3️⃣ Refresh Access Token
 ```http
 POST /api/auth/refresh
 Content-Type: application/json
@@ -121,15 +121,15 @@ Content-Type: application/json
 }
 ```
 
-?? **Rate Limited**: 5 requests per minute per IP
+🚦 **Rate Limited**: 5 requests per minute per IP
 
 **Features:**
-- ?? Old refresh token is automatically revoked
-- ?? New refresh token issued
-- ?? Access token expires after 60 minutes
-- ?? Refresh token expires after 7 days
+- ♻️ Old refresh token is automatically revoked
+- 🔄 New refresh token issued
+- ⏱️ Access token expires after 60 minutes
+- 📅 Refresh token expires after 7 days
 
-#### 4?? Logout
+#### 4️⃣ Logout
 ```http
 POST /api/auth/logout
 Authorization: Bearer {access-token}
@@ -144,7 +144,7 @@ Authorization: Bearer {access-token}
 
 **Behavior**: Revokes all refresh tokens for the user
 
-#### 5?? Get Current User
+#### 5️⃣ Get Current User
 ```http
 GET /api/auth/me
 Authorization: Bearer {access-token}
@@ -160,7 +160,7 @@ Authorization: Bearer {access-token}
 }
 ```
 
-#### 6?? Get All Users (Admin Only)
+#### 6️⃣ Get All Users (Admin Only)
 ```http
 GET /api/auth/admin/users
 Authorization: Bearer {admin-access-token}
@@ -184,7 +184,7 @@ Authorization: Bearer {admin-access-token}
 ]
 ```
 
-## ?? Security Features
+## 🔒 Security Features
 
 ### Refresh Token System
 
@@ -198,10 +198,10 @@ Authorization: Bearer {admin-access-token}
 
 **Authentication Flow:**
 ```
-1. Login ? Access Token (60m) + Refresh Token (7d)
-2. Access Expires ? Use Refresh Token
-3. Get New Tokens ? Old Refresh Revoked
-4. Refresh Expires ? Must Login Again
+1. Login → Access Token (60m) + Refresh Token (7d)
+2. Access Expires → Use Refresh Token
+3. Get New Tokens → Old Refresh Revoked
+4. Refresh Expires → Must Login Again
 ```
 
 ### Login Audit Logging
@@ -243,75 +243,75 @@ Protection against brute-force attacks:
 **Why only auth endpoints?**
 Other endpoints require valid JWT, making them already secure.
 
-## ??? Architecture
+## 🏗️ Architecture
 
 ### Project Structure
 
 ```
 ApiAuth/
-??? ?? Domain/                          # Core entities
-?   ??? ApplicationUser.cs              # Custom user entity
-?   ??? RefreshToken.cs                 # Refresh token entity
-?   ??? LoginAuditLog.cs                # Audit log entity
-?
-??? ?? Application/                     # Business logic
-?   ??? DTOs/                           # Data transfer objects
-?   ?   ??? RegisterRequest.cs
-?   ?   ??? LoginRequest.cs
-?   ?   ??? AuthResponse.cs
-?   ?   ??? AuthResponseWithRefreshToken.cs
-?   ?   ??? RefreshTokenRequest.cs
-?   ?   ??? UserResponse.cs
-?   ??? Interfaces/                     # Service contracts
-?   ?   ??? IAuthService.cs
-?   ?   ??? IJwtTokenGenerator.cs
-?   ?   ??? IRefreshTokenService.cs
-?   ?   ??? IAuditLogService.cs
-?   ??? Services/                       # Service implementations
-?       ??? AuthService.cs
-?       ??? RefreshTokenService.cs
-?       ??? AuditLogService.cs
-?
-??? ?? Infrastructure/                  # External concerns
-?   ??? Persistence/
-?   ?   ??? ApplicationDbContext.cs     # EF Core context
-?   ??? Security/
-?   ?   ??? JwtTokenGenerator.cs        # JWT generation
-?   ??? Seed/
-?       ??? DatabaseSeeder.cs           # Admin user seeding
-?
-??? ?? API/                             # Presentation layer
-    ??? Controllers/
-    ?   ??? AuthController.cs           # API endpoints
-    ??? Middleware/
-    ?   ??? ExceptionMiddleware.cs      # Error handling
-    ??? Helpers/
-        ??? HttpContextHelper.cs        # HTTP utilities
+├── 📁 Domain/                          # Core entities
+│   ├── ApplicationUser.cs              # Custom user entity
+│   ├── RefreshToken.cs                 # Refresh token entity
+│   └── LoginAuditLog.cs                # Audit log entity
+│
+├── 📁 Application/                     # Business logic
+│   ├── DTOs/                           # Data transfer objects
+│   │   ├── RegisterRequest.cs
+│   │   ├── LoginRequest.cs
+│   │   ├── AuthResponse.cs
+│   │   ├── AuthResponseWithRefreshToken.cs
+│   │   ├── RefreshTokenRequest.cs
+│   │   └── UserResponse.cs
+│   ├── Interfaces/                     # Service contracts
+│   │   ├── IAuthService.cs
+│   │   ├── IJwtTokenGenerator.cs
+│   │   ├── IRefreshTokenService.cs
+│   │   └── IAuditLogService.cs
+│   └── Services/                       # Service implementations
+│       ├── AuthService.cs
+│       ├── RefreshTokenService.cs
+│       └── AuditLogService.cs
+│
+├── 📁 Infrastructure/                  # External concerns
+│   ├── Persistence/
+│   │   └── ApplicationDbContext.cs     # EF Core context
+│   ├── Security/
+│   │   └── JwtTokenGenerator.cs        # JWT generation
+│   └── Seed/
+│       └── DatabaseSeeder.cs           # Admin user seeding
+│
+└── 📁 API/                             # Presentation layer
+    ├── Controllers/
+    │   └── AuthController.cs           # API endpoints
+    ├── Middleware/
+    │   └── ExceptionMiddleware.cs      # Error handling
+    └── Helpers/
+        └── HttpContextHelper.cs        # HTTP utilities
 ```
 
 ### Design Principles
 
-? **SOLID Principles**
+✅ **SOLID Principles**
 - Single Responsibility - Each class has one purpose
 - Open/Closed - Extensible through interfaces
 - Liskov Substitution - Proper inheritance
 - Interface Segregation - Focused contracts
 - Dependency Inversion - Depends on abstractions
 
-? **Clean Architecture**
+✅ **Clean Architecture**
 - Domain layer has no dependencies
 - Application layer depends only on Domain
 - Infrastructure implements Application interfaces
 - API layer orchestrates everything
 
-? **Best Practices**
+✅ **Best Practices**
 - Async/await throughout
 - Dependency injection
 - DTOs for data transfer
 - Repository pattern (via EF Core)
 - Global exception handling
 
-## ?? Configuration
+## ⚙️ Configuration
 
 ### appsettings.json
 
@@ -349,7 +349,7 @@ CONNECTIONSTRINGS__DEFAULTCONNECTION=<connection-string>
 - At least one digit
 - Non-alphanumeric optional (configurable)
 
-## ?? Testing
+## 🧪 Testing
 
 ### Using Swagger UI
 
@@ -359,7 +359,7 @@ CONNECTIONSTRINGS__DEFAULTCONNECTION=<connection-string>
 
 3. **Get tokens** - Copy `token` and `refreshToken` from response
 
-4. **Authorize** - Click ?? **Authorize** button, enter: `Bearer {token}`
+4. **Authorize** - Click 🔓 **Authorize** button, enter: `Bearer {token}`
 
 5. **Test endpoints** - Try protected endpoints like `/api/auth/me`
 
@@ -372,9 +372,9 @@ CONNECTIONSTRINGS__DEFAULTCONNECTION=<connection-string>
 Import the provided collection: `ApiAuth.postman_collection.json`
 
 The collection includes:
-- ? All endpoints with examples
-- ? Automatic token variable setting
-- ? Rate limiting tests
+- ✅ All endpoints with examples
+- ✅ Automatic token variable setting
+- ✅ Rate limiting tests
 
 ### Using .http File
 
@@ -395,26 +395,26 @@ Content-Type: application/json
 
 **Test Refresh Token Flow:**
 ```
-1. Login ? Save refresh token
-2. Use refresh token ? Get new tokens
-3. Try old refresh token ? Should fail (401)
+1. Login → Save refresh token
+2. Use refresh token → Get new tokens
+3. Try old refresh token → Should fail (401)
 ```
 
 **Test Rate Limiting:**
 ```
-1. Make 5 login requests ? All processed
-2. Make 6th request ? Should return 429
-3. Wait 1 minute ? Should work again
+1. Make 5 login requests → All processed
+2. Make 6th request → Should return 429
+3. Wait 1 minute → Should work again
 ```
 
 **Test Logout:**
 ```
-1. Login ? Get tokens
-2. Logout ? Tokens revoked
-3. Try refresh ? Should fail (401)
+1. Login → Get tokens
+2. Logout → Tokens revoked
+3. Try refresh → Should fail (401)
 ```
 
-## ??? Database
+## 🗄️ Database
 
 ### Tables
 
@@ -455,7 +455,7 @@ dotnet ef database update
 dotnet ef migrations remove
 ```
 
-## ?? Production Deployment
+## 🚢 Production Deployment
 
 ### Pre-Deployment Checklist
 
@@ -524,7 +524,7 @@ For distributed deployments:
 - Implement **async audit logging** with message queue
 - Archive old audit logs to **cold storage**
 
-## ?? Troubleshooting
+## 🐛 Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -536,7 +536,7 @@ For distributed deployments:
 | Audit logs too large | Implement cleanup job, set retention policy |
 | Admin has no roles | Delete database and restart (auto-seeding will fix) |
 
-## ?? HTTP Status Codes
+## 📊 HTTP Status Codes
 
 | Code | Meaning | When |
 |------|---------|------|
@@ -548,18 +548,18 @@ For distributed deployments:
 | 429 Too Many Requests | Rate limit exceeded | Too many auth attempts |
 | 500 Internal Server Error | Server error | Unexpected server error |
 
-## ?? License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ?? Acknowledgments
+## 🙏 Acknowledgments
 
 - ASP.NET Core Team for excellent documentation
 - Microsoft Identity for secure authentication
 - Entity Framework Core for data access
 - Community for best practices and patterns
 
-## ?? Support
+## 📞 Support
 
 If you have questions or issues:
 
@@ -571,6 +571,6 @@ If you have questions or issues:
 
 ---
 
-**Built with ?? using .NET 8 and Clean Architecture principles**
+**Built with ❤️ using .NET 8 and Clean Architecture principles**
 
-**Status**: ? Production Ready | ?? Secure | ?? Well Documented
+**Status**: ✅ Production Ready | 🔒 Secure | 📚 Well Documented
