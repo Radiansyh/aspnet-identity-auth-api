@@ -46,7 +46,10 @@ dotnet restore
 # Run the application
 dotnet run
 ```
-
+```bash
+# Open on Package Manager Console
+Update-Database
+```
 The API will start at:
 - **HTTPS**: `https://localhost:7xxx`
 - **Swagger UI**: `https://localhost:7xxx/swagger`
