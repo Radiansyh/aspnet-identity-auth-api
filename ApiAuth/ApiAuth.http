@@ -1,0 +1,68 @@
+@ApiAuth_HostAddress = https://localhost:7001
+@accessToken = 
+@refreshToken = 
+
+### Register User
+POST {{ApiAuth_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "email": "john@example.com",
+  "password": "Test@123"
+}
+
+### Login
+# @name login
+POST {{ApiAuth_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "Test@123"
+}
+
+### Refresh Token
+POST {{ApiAuth_HostAddress}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{{refreshToken}}"
+}
+
+### Logout
+POST {{ApiAuth_HostAddress}}/api/auth/logout
+Authorization: Bearer {{accessToken}}
+
+### Get Current User
+GET {{ApiAuth_HostAddress}}/api/auth/me
+Authorization: Bearer {{accessToken}}
+
+### Get All Users (Admin Only)
+GET {{ApiAuth_HostAddress}}/api/auth/admin/users
+Authorization: Bearer {{accessToken}}
+
+### Login as Admin
+# @name adminLogin
+POST {{ApiAuth_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@apiauth.com",
+  "password": "Admin@123"
+}
+
+### Test Rate Limiting - Make 6 requests quickly
+# Run this request 6 times in quick succession
+# The 6th request should return HTTP 429
+POST {{ApiAuth_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "WrongPassword"
+}
+````````
+
+
+# Response
